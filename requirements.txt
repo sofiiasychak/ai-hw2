@@ -1,0 +1,19 @@
+# torch, torchvision: Kaggle preinstalled
+# pip-resolved on Python 3.12
+ultralytics==8.4.208
+pycocotools==2.0.11
+faster-coco-eval==1.8.0
+numpy==2.5.4
+pandas==3.1.1
+pyarrow==26.0.1
+opencv-python-headless==5.0.0.93
+pyyaml==6.0.3
+tqdm==4.70.1
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+wandb==0.31.0
+sahi==0.14.0
+ensemble-boxes==1.0.10
+tidecv==1.0.1
+pytest==9.2.0

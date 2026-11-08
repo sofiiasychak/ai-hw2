@@ -1,0 +1,13 @@
+step: 5
+seed: 42
+long_side_cap: 1920
+ignore_fill: 114
+val_monitor_step: 5
+val_testlike_step: 2
+# keyed by original image width
+val_testlike_scales:
+  3840: 0.25
+  2720: 0.5
+  2688: 0.5
+  1344: 0.5
+  default: 1.0
