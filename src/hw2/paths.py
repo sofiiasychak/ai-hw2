@@ -9,7 +9,8 @@ from pathlib import Path
 
 KAGGLE_INPUT = Path("/kaggle/input")
 KAGGLE_WORKING = Path("/kaggle/working")
-SEARCH_DEPTH = 3
+SEARCH_DEPTH = 7
+SKIP_DIRS = frozenset({"images", "labels", "ignore"})
 
 
 def repo_root() -> Path:
@@ -32,15 +33,21 @@ def _env_path(name: str) -> Path | None:
 
 
 @lru_cache(maxsize=None)
+def find_dir_with(root: Path, marker: str, max_depth: int = SEARCH_DEPTH) -> Path | None:
+    """Return the shallowest folder at most max_depth below root holding marker, never entering SKIP_DIRS."""
+    hits: list[tuple[int, str]] = []
+    for dirpath, dirnames, filenames in os.walk(root, followlinks=True):
+        depth = len(Path(dirpath).relative_to(root).parts)
+        if marker in dirnames or marker in filenames:
+            hits.append((depth, dirpath))
+        keep = [] if depth >= max_depth else sorted(d for d in dirnames if d not in SKIP_DIRS)
+        dirnames[:] = keep  # prune walk in place
+    return Path(min(hits)[1]) if hits else None
+
+
 def find_kaggle_input(marker: str) -> Path | None:
     """Return the shallowest folder under /kaggle/input that contains an entry named marker."""
-    if not KAGGLE_INPUT.is_dir():
-        return None
-    for depth in range(1, SEARCH_DEPTH + 1):
-        hits = sorted(KAGGLE_INPUT.glob("/".join(["*"] * depth + [marker])))
-        if hits:
-            return hits[0].parent
-    return None
+    return find_dir_with(KAGGLE_INPUT, marker) if KAGGLE_INPUT.is_dir() else None
 
 
 def data_root() -> Path:
