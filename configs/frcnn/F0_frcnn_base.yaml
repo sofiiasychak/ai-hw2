@@ -1,0 +1,20 @@
+# Faster R-CNN R50-FPN v2 baseline
+base: ../torchvision_base.yaml
+family: frcnn
+time_budget_h: 2.5
+train:
+  lr: 0.005
+model:
+  min_size: 720
+  max_size: 1280
+  anchor_sizes: [32, 64, 128, 256, 512]
+  rpn_pre_nms_top_n_train: 2000
+  rpn_post_nms_top_n_train: 2000
+  rpn_pre_nms_top_n_test: 1000
+  rpn_post_nms_top_n_test: 1000
+  box_batch_size_per_image: 512
+  box_positive_fraction: 0.25
+  box_loss: smooth_l1
+  box_detections_per_img: 500
+  box_score_thresh: 0.001
+  box_nms_thresh: 0.5

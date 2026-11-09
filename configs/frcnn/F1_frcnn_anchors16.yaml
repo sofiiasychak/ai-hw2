@@ -1,0 +1,4 @@
+# change: anchors 16-256
+base: F0_frcnn_base.yaml
+model:
+  anchor_sizes: [16, 32, 64, 128, 256]

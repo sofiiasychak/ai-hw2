@@ -1,0 +1,5 @@
+# change: matcher IoU 0.4/0.3
+base: R0_retina_base.yaml
+model:
+  fg_iou_thresh: 0.4
+  bg_iou_thresh: 0.3

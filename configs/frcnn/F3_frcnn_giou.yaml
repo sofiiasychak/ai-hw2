@@ -1,0 +1,4 @@
+# change: GIoU box loss
+base: F0_frcnn_base.yaml
+model:
+  box_loss: giou

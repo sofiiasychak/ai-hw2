@@ -1,0 +1,5 @@
+# change: base sizes 16-256
+# ratios stay default for now
+base: R0_retina_base.yaml
+model:
+  anchor_base_sizes: [16, 32, 64, 128, 256]

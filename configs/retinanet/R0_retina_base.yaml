@@ -1,0 +1,20 @@
+# RetinaNet R50-FPN v2 baseline
+base: ../torchvision_base.yaml
+family: retinanet
+time_budget_h: 2.5
+train:
+  lr: 0.0025
+model:
+  min_size: 720
+  max_size: 1280
+  anchor_base_sizes: [32, 64, 128, 256, 512]
+  anchor_ratios: [0.5, 1.0, 2.0]
+  fg_iou_thresh: 0.5
+  bg_iou_thresh: 0.4
+  regression_loss: giou
+  focal_gamma: null
+  focal_alpha: null
+  detections_per_img: 500
+  score_thresh: 0.001
+  topk_candidates: 1000
+  nms_thresh: 0.5

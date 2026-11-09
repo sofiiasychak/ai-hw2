@@ -1,0 +1,5 @@
+# change: 1024 RoIs, half positive
+base: F0_frcnn_base.yaml
+model:
+  box_batch_size_per_image: 1024
+  box_positive_fraction: 0.5

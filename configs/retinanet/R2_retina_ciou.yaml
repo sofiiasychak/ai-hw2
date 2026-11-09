@@ -1,0 +1,4 @@
+# change: CIoU regression loss
+base: R0_retina_base.yaml
+model:
+  regression_loss: ciou

@@ -1,0 +1,17 @@
+# shared torchvision experiment defaults
+data_variant: train_s5
+time_budget_h: 2.5
+splits: [val, val_testlike, test]
+train:
+  batch: 4
+  workers: 2
+  momentum: 0.9
+  weight_decay: 1.0e-4
+  warmup_iters: 500
+  grad_clip: 10.0
+  color_jitter: 0.0
+  epochs: null
+predict:
+  batch: 4
+  workers: 2
+  amp: false
