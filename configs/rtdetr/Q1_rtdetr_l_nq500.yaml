@@ -1,0 +1,4 @@
+# change: 500 decoder queries
+base: Q0_rtdetr_l_nq300.yaml
+model: configs/models/rtdetr-l-nq500.yaml
+pretrained: rtdetr-l.pt

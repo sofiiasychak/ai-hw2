@@ -1,0 +1,12 @@
+# baseline, default augmentation
+base: ../ultralytics_base.yaml
+family: yolo
+model: yolo11s.pt
+train:
+  time: 2.5
+  epochs: 300
+  imgsz: 1280
+  batch: 8
+  close_mosaic: 10
+predict:
+  imgsz: 1280

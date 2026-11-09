@@ -1,0 +1,7 @@
+# change: imgsz 1536
+base: A0_yolo11s_1280.yaml
+train:
+  imgsz: 1536
+  batch: 6
+predict:
+  imgsz: 1536

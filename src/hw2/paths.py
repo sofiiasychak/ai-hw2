@@ -66,8 +66,8 @@ def out_root() -> Path:
 
 
 def results_dir() -> Path:
-    """Return the committed results folder inside the repository."""
-    return repo_root() / "results"
+    """Return the results folder from HW2_RESULTS_DIR, else the committed results/ inside the repository."""
+    return _env_path("HW2_RESULTS_DIR") or repo_root() / "results"
 
 
 ROOTS: dict[str, Callable[[], Path]] = {

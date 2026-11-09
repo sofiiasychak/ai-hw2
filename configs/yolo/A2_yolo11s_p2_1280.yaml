@@ -1,0 +1,6 @@
+# change: extra P2/4 head
+base: A0_yolo11s_1280.yaml
+model: configs/models/yolo11s-p2.yaml
+pretrained: yolo11s.pt
+train:
+  batch: 6

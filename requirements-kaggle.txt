@@ -1,0 +1,7 @@
+# Kaggle-only installs, pins match requirements.txt
+ultralytics==8.4.208
+pycocotools==2.0.11
+faster-coco-eval==1.8.0
+sahi==0.14.0
+ensemble-boxes==1.0.10
+tidecv==1.0.1

@@ -1,0 +1,11 @@
+# shared Ultralytics experiment defaults
+data_variant: train_s5
+pretrained: null
+loss_patch: null
+splits: [val, val_testlike, test]
+predict:
+  conf: 0.001
+  iou: 0.7
+  max_det: 500
+  half: true
+  batch: 8

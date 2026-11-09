@@ -1,0 +1,7 @@
+# change: imgsz 1024
+base: A0_yolo11s_1280.yaml
+train:
+  imgsz: 1024
+  batch: 12
+predict:
+  imgsz: 1024
