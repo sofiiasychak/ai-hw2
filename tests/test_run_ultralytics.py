@@ -52,3 +52,16 @@ def test_data_yaml_uses_absolute_paths(tmp_path: Path, monkeypatch: pytest.Monke
     assert data["names"][7] == "motor" and len(data["names"]) == 8
     with pytest.raises(FileNotFoundError):
         ru.write_data_yaml(tmp_path / "run" / "data.yaml", "missing_variant")
+
+
+def test_data_yaml_adds_extra_train_splits(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Extra splits turn train into a list of absolute folders while val stays val_monitor."""
+    for split in ("train_s5", "val_monitor"):
+        (tmp_path / split / "images").mkdir(parents=True)
+    monkeypatch.setenv("HW2_PREP_ROOT", str(tmp_path))
+    root = tmp_path.resolve()
+    data = yaml.safe_load(ru.write_data_yaml(tmp_path / "run" / "data.yaml", "train_s5", ["val_monitor"]).read_text())
+    assert data["train"] == [str(root / "train_s5" / "images"), str(root / "val_monitor" / "images")]
+    assert data["val"] == str(root / "val_monitor" / "images")
+    with pytest.raises(FileNotFoundError):
+        ru.write_data_yaml(tmp_path / "run" / "data.yaml", "train_s5", ["missing_split"])

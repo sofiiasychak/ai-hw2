@@ -1,0 +1,6 @@
+# A0 plus winning changes
+# A1: no result, skipped
+# A2 P2: +0.15 mAP, rejected
+base: A0_yolo11s_1280.yaml
+train:
+  time: 2.5

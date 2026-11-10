@@ -34,9 +34,10 @@ pull() {
 
 # Print config path for ID.
 config_for() {
-  local matches=(configs/*/"$1"_*.yaml)
-  if [[ ${#matches[@]} -ne 1 || ! -f ${matches[0]} ]]; then
-    echo "no unique config for $1: ${matches[*]}" >&2
+  shopt -s nullglob
+  local matches=(configs/*/"$1".yaml configs/*/"$1"_*.yaml)
+  if [[ ${#matches[@]} -ne 1 ]]; then
+    echo "no unique config for $1: ${matches[*]:-none}" >&2
     return 1
   fi
   echo "${matches[0]}"

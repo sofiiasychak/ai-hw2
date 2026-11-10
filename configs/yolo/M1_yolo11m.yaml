@@ -1,0 +1,6 @@
+# change: yolo11m weights
+base: At_yolo11s_tuned.yaml
+model: yolo11m.pt
+train:
+  time: 2.5
+  batch: 4 # fits one T4

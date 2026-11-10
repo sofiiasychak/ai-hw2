@@ -70,14 +70,17 @@ def pick(items: Sequence[Any], limit: int | None) -> list[Any]:
     return list(items[:: len(items) // limit][:limit])
 
 
-def write_data_yaml(path: Path, variant: str) -> Path:
-    """Write an Ultralytics data yaml with absolute train and val_monitor image folders."""
+def write_data_yaml(path: Path, variant: str, extra: Sequence[str] = ()) -> Path:
+    """Write an Ultralytics data yaml with absolute image folders, training on variant plus extra splits and validating on val_monitor."""
     root = prep_root().resolve()
-    train, val = root / variant / "images", root / MONITOR_SPLIT / "images"
-    for folder in (train, val):
+    trains, val = [root / split / "images" for split in (variant, *extra)], root / MONITOR_SPLIT / "images"
+    for folder in (*trains, val):
         if not folder.is_dir():
             raise FileNotFoundError(f"missing prepared images {folder}; run hw2.data.prepare first")
-    data = {"path": str(root), "train": str(train), "val": str(val), "names": dict(enumerate(CLASS_NAMES))}
+    if MONITOR_SPLIT in extra:
+        LOG.warning("%s is also trained on, so val metrics are only a sanity check", MONITOR_SPLIT)
+    train = str(trains[0]) if len(trains) == 1 else [str(folder) for folder in trains]
+    data = {"path": str(root), "train": train, "val": str(val), "names": dict(enumerate(CLASS_NAMES))}
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(yaml.safe_dump(data, sort_keys=False))
     return path
@@ -135,7 +138,8 @@ def train_args(cfg: Mapping[str, Any], run: str, data_yaml: Path, device: str, s
 
 def train(cfg: Mapping[str, Any], run: str, out_dir: Path, device: str, smoke: bool) -> tuple[Path, float]:
     """Train the configured model into out_dir and return its last.pt and the training wall hours."""
-    data_yaml = write_data_yaml(out_dir / "data.yaml", cfg.get("data_variant") or DEFAULT_VARIANT)
+    variant = cfg.get("data_variant") or DEFAULT_VARIANT
+    data_yaml = write_data_yaml(out_dir / "data.yaml", variant, cfg.get("extra_train") or ())
     (out_dir / "results.csv").unlink(missing_ok=True)
     setup_wandb(run, cfg, out_dir, ddp=gpu_count(device) > 1)
     apply_loss_patch(cfg.get("loss_patch"))
