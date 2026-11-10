@@ -75,11 +75,12 @@ def load_test_images() -> pd.DataFrame:
     return pd.read_csv(data_root() / "test_images.csv")
 
 
-def save_figure(fig: Figure, name: str) -> None:
-    """Save a figure as images/eda_<name>.png at 150 dpi."""
-    path = repo_root() / "images" / f"eda_{name}.png"
+def save_figure(fig: Figure, name: str, prefix: str = "eda_") -> Path:
+    """Save a figure as images/<prefix><name>.png at 150 dpi and return the path."""
+    path = repo_root() / "images" / f"{prefix}{name}.png"
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=FIG_DPI, bbox_inches="tight")
+    return path
 
 
 def resolution(frames: pd.DataFrame) -> pd.Series:

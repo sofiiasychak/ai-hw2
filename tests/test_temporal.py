@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from hw2.config import load_config
+from hw2.config import find_config, load_config
 from hw2.eval.preds import PRED_COLUMNS, frame_key, validate_preds
 from hw2.infer import temporal as tp
 
@@ -145,5 +145,5 @@ def test_tune_scans_grid_then_decay() -> None:
 
 def test_t1_config_found() -> None:
     """The T1 experiment id resolves to one temporal config with a grid."""
-    cfg = load_config(tp.find_config("T1"))
+    cfg = load_config(find_config("T1"))
     assert cfg["exp_id"] == "T1" and set(cfg["grid"]) == {*tp.GRID_KEYS, "decay"}

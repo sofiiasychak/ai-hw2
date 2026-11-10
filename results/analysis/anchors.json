@@ -1,0 +1,208 @@
+{
+  "input": {
+    "min_size": 720,
+    "max_size": 1280
+  },
+  "kmeans": {
+    "k": 9,
+    "seed": 42,
+    "n_boxes": 1105516,
+    "anchors_wh": [
+      [
+        11.4,
+        15.7
+      ],
+      [
+        15.2,
+        28.9
+      ],
+      [
+        24.9,
+        19.5
+      ],
+      [
+        22.9,
+        37.0
+      ],
+      [
+        42.4,
+        27.6
+      ],
+      [
+        34.3,
+        48.4
+      ],
+      [
+        74.8,
+        39.0
+      ],
+      [
+        55.8,
+        67.9
+      ],
+      [
+        118.6,
+        78.7
+      ]
+    ],
+    "mean_best_iou": 0.7257143533463736,
+    "ratios_h_over_w": [
+      0.61,
+      1.09,
+      1.63
+    ],
+    "default_ratios": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "ratios_differ": false
+  },
+  "n_frames": 500,
+  "coverage": [
+    {
+      "model": "frcnn",
+      "anchors": "default",
+      "bucket": "small",
+      "n": 5180,
+      "iou>=0.5": 0.19806949806949806,
+      "iou>=0.4": 0.3333976833976834,
+      "mean_best_iou": 0.3543077216774916
+    },
+    {
+      "model": "frcnn",
+      "anchors": "default",
+      "bucket": "medium",
+      "n": 12998,
+      "iou>=0.5": 0.8733651330973996,
+      "iou>=0.4": 0.9369133712878904,
+      "mean_best_iou": 0.649263884030153
+    },
+    {
+      "model": "frcnn",
+      "anchors": "default",
+      "bucket": "large",
+      "n": 2412,
+      "iou>=0.5": 0.9966832504145937,
+      "iou>=0.4": 1.0,
+      "mean_best_iou": 0.6813297097634518
+    },
+    {
+      "model": "frcnn",
+      "anchors": "default",
+      "bucket": "all",
+      "n": 20590,
+      "iou>=0.5": 0.717921321029626,
+      "iou>=0.4": 0.7924720738222438,
+      "mean_best_iou": 0.5788156009161136
+    },
+    {
+      "model": "frcnn",
+      "anchors": "16-256",
+      "bucket": "small",
+      "n": 5180,
+      "iou>=0.5": 0.8961389961389962,
+      "iou>=0.4": 0.9310810810810811,
+      "mean_best_iou": 0.6322713994841778
+    },
+    {
+      "model": "frcnn",
+      "anchors": "16-256",
+      "bucket": "medium",
+      "n": 12998,
+      "iou>=0.5": 0.9859978458224342,
+      "iou>=0.4": 0.9999230650869364,
+      "mean_best_iou": 0.6510724357814675
+    },
+    {
+      "model": "frcnn",
+      "anchors": "16-256",
+      "bucket": "large",
+      "n": 2412,
+      "iou>=0.5": 0.9892205638474295,
+      "iou>=0.4": 0.9995854063018242,
+      "mean_best_iou": 0.6520705817029449
+    },
+    {
+      "model": "frcnn",
+      "anchors": "16-256",
+      "bucket": "all",
+      "n": 20590,
+      "iou>=0.5": 0.9637688198154444,
+      "iou>=0.4": 0.9825643516270034,
+      "mean_best_iou": 0.6464594275222466
+    },
+    {
+      "model": "retinanet",
+      "anchors": "default",
+      "bucket": "small",
+      "n": 5180,
+      "iou>=0.5": 0.1969111969111969,
+      "iou>=0.4": 0.3299227799227799,
+      "mean_best_iou": 0.34648998183086804
+    },
+    {
+      "model": "retinanet",
+      "anchors": "default",
+      "bucket": "medium",
+      "n": 12998,
+      "iou>=0.5": 0.8731343283582089,
+      "iou>=0.4": 0.9364517618095092,
+      "mean_best_iou": 0.6812383916116087
+    },
+    {
+      "model": "retinanet",
+      "anchors": "default",
+      "bucket": "large",
+      "n": 2412,
+      "iou>=0.5": 0.9987562189054726,
+      "iou>=0.4": 1.0,
+      "mean_best_iou": 0.7730399535761939
+    },
+    {
+      "model": "retinanet",
+      "anchors": "default",
+      "bucket": "all",
+      "n": 20590,
+      "iou>=0.5": 0.7177270519669743,
+      "iou>=0.4": 0.7913064594463332,
+      "mean_best_iou": 0.607776934826487
+    },
+    {
+      "model": "retinanet",
+      "anchors": "16-256",
+      "bucket": "small",
+      "n": 5180,
+      "iou>=0.5": 0.8256756756756757,
+      "iou>=0.4": 0.9202702702702703,
+      "mean_best_iou": 0.6084662952046827
+    },
+    {
+      "model": "retinanet",
+      "anchors": "16-256",
+      "bucket": "medium",
+      "n": 12998,
+      "iou>=0.5": 0.9937682720418526,
+      "iou>=0.4": 0.9999230650869364,
+      "mean_best_iou": 0.674973129217286
+    },
+    {
+      "model": "retinanet",
+      "anchors": "16-256",
+      "bucket": "large",
+      "n": 2412,
+      "iou>=0.5": 0.99212271973466,
+      "iou>=0.4": 1.0,
+      "mean_best_iou": 0.6769434723688003
+    },
+    {
+      "model": "retinanet",
+      "anchors": "16-256",
+      "bucket": "all",
+      "n": 20590,
+      "iou>=0.5": 0.951287032540068,
+      "iou>=0.4": 0.9798931520155415,
+      "mean_best_iou": 0.6584722582846084
+    }
+  ]
+}

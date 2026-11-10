@@ -1,0 +1,51 @@
+{
+  "exp_id": "F0",
+  "frame_stride": 10,
+  "tide": {
+    "ap50": 42.07993253202361,
+    "main": {
+      "Cls": 12.350903616461721,
+      "Loc": 5.25001839296803,
+      "Both": 0.9040882717475327,
+      "Dupe": 0.020431185974679522,
+      "Bkg": 3.3568344128640675,
+      "Miss": 9.635343367328105
+    },
+    "special": {
+      "FalsePos": 30.568582319461534,
+      "FalseNeg": 17.21758918082994
+    },
+    "n_images": 288
+  },
+  "totals": {
+    "missed_small": 12514,
+    "confusions": 12456,
+    "duplicates": 507
+  },
+  "gallery": [
+    {
+      "n": 1,
+      "kind": "missed_small",
+      "frame": "uav0000182_00000_v/0000227",
+      "missed_small": 22,
+      "confusions": 11,
+      "duplicates": 0
+    },
+    {
+      "n": 2,
+      "kind": "confusions",
+      "frame": "uav0000182_00000_v/0000238",
+      "missed_small": 13,
+      "confusions": 24,
+      "duplicates": 0
+    },
+    {
+      "n": 3,
+      "kind": "duplicates",
+      "frame": "uav0000086_00000_v/0000017",
+      "missed_small": 3,
+      "confusions": 0,
+      "duplicates": 3
+    }
+  ]
+}

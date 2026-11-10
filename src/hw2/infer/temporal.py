@@ -15,11 +15,11 @@ from scipy.optimize import linear_sum_assignment
 from scipy.sparse import coo_matrix
 from scipy.sparse.csgraph import connected_components
 
-from hw2.config import load_config
+from hw2.config import find_config, load_config
 from hw2.constants import MAX_DETS, NUM_CLASSES
 from hw2.eval.coco_eval import evaluate, load_gt
 from hw2.eval.preds import PRED_COLUMNS, frame_key, load_preds, match_frames, top_k_per_image, validate_preds
-from hw2.paths import out_root, repo_root, results_dir
+from hw2.paths import out_root, results_dir
 from hw2.train.common import finalize_run, gt_json, preds_path, save_preds, split_images
 from hw2.utils import Timer, get_logger, load_json, save_json
 
@@ -240,14 +240,6 @@ def input_map(preds_dir: Path, split: str, preds: pd.DataFrame) -> float | None:
         return load_json(saved)["map"]
     gt = gt_json(split)
     return evaluate(preds, gt, breakdown=False)["map"] if gt.exists() else None
-
-
-def find_config(exp_id: str) -> Path:
-    """Return the single configs/<family>/<exp_id>_<name>.yaml file of an experiment id."""
-    matches = sorted((repo_root() / "configs").glob(f"*/{exp_id}_*.yaml"))
-    if len(matches) != 1:
-        raise FileNotFoundError(f"expected one config for {exp_id}, found {[str(m) for m in matches]}")
-    return matches[0]
 
 
 def _fmt(value: float | None, sign: str = "") -> str:

@@ -1,0 +1,31 @@
+{
+  "exp_id": "F0",
+  "n_images": 100,
+  "iou": 0.5,
+  "recall": {
+    "small": {
+      "rpn proposals": 63.19218241042345,
+      "final, any class": 59.28338762214984,
+      "final, same class": 56.56894679695983,
+      "n ground truth": 921.0
+    },
+    "medium": {
+      "rpn proposals": 77.3591943304737,
+      "final, any class": 75.04662439388288,
+      "final, same class": 70.79447967176426,
+      "n ground truth": 2681.0
+    },
+    "large": {
+      "rpn proposals": 98.84792626728111,
+      "final, any class": 97.00460829493088,
+      "final, same class": 95.39170506912443,
+      "n ground truth": 434.0
+    },
+    "all": {
+      "rpn proposals": 76.43706640237859,
+      "final, any class": 73.81070366699703,
+      "final, same class": 70.19326065411299,
+      "n ground truth": 4036.0
+    }
+  }
+}

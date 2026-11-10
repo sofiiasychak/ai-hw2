@@ -10,6 +10,8 @@ from typing import Any
 
 import yaml
 
+from hw2.paths import repo_root
+
 BASE_KEY = "base"
 
 
@@ -89,3 +91,11 @@ def load_config(path: str | Path, overrides: Iterable[str] | None = None) -> dic
     for item in overrides or ():
         apply_override(cfg, item)
     return cfg
+
+
+def find_config(exp_id: str) -> Path:
+    """Return the single configs/<family>/<exp_id>_<name>.yaml file of an experiment id."""
+    matches = sorted((repo_root() / "configs").glob(f"*/{exp_id}_*.yaml"))
+    if len(matches) != 1:
+        raise FileNotFoundError(f"expected one config for {exp_id}, found {[str(m) for m in matches]}")
+    return matches[0]
