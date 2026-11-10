@@ -1,5 +1,5 @@
 # submission model: At with yolo11m
-# launch: run_lanes.sh --ddp FINAL
+# single GPU, DDP failed
 # trains on val_monitor too
 # val metrics: sanity check only
 base: At_yolo11s_tuned.yaml
@@ -7,4 +7,4 @@ model: yolo11m.pt
 extra_train: [val_monitor]
 train:
   time: 7.0
-  batch: 8 # total, 4 per T4
+  batch: 4 # fits one T4
