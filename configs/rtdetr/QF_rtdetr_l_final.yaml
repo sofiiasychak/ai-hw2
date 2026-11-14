@@ -1,0 +1,4 @@
+# QL plus val_monitor frames
+# val metrics: sanity check only
+base: QL_rtdetr_l_long.yaml
+extra_train: [val_monitor]

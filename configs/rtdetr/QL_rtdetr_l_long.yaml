@@ -1,0 +1,5 @@
+# change: 9 h budget
+# clean long run, single GPU
+base: Q0_rtdetr_l_nq300.yaml
+train:
+  time: 9.0
